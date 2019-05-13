@@ -40,7 +40,7 @@
                     return null;
                 }
 
-                return $"shopspeed.azurewebsites.net{this.ImageUrl.Substring(1)}";
+                return $"https://shopspeed.azurewebsites.net{this.ImageUrl.Substring(1)}";
             }
         }
     }
