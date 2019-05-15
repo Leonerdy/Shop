@@ -14,7 +14,7 @@ namespace Shop.Web.Controllers
     using Microsoft.EntityFrameworkCore;
     using Shop.Web.Models;
 
-    [Authorize]
+    
     public class ProductsController : Controller
     {
         private readonly IProductRepository productRepository;
@@ -27,6 +27,7 @@ namespace Shop.Web.Controllers
             this.userHelper = userHelper;
         }
 
+        
         // GET: Products
         public IActionResult Index()
         {
@@ -50,6 +51,7 @@ namespace Shop.Web.Controllers
             return View(product);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Products/Create
         public IActionResult Create()
         {
@@ -83,7 +85,7 @@ namespace Shop.Web.Controllers
                     path = $"~/images/Products/{file}";
                 }
 
-                var product = this.toProduct(view, path);
+                var product = this.ToProduct(view, path);
                 product.User = await this.userHelper.GetUserByEmailAsync(this.User.Identity.Name);
                 await this.productRepository.CreateAsync(product);
                 return RedirectToAction(nameof(Index));
@@ -92,7 +94,7 @@ namespace Shop.Web.Controllers
             return View(view);
         }
 
-        private Product toProduct(ProductViewModel view, string path)
+        private Product ToProduct(ProductViewModel view, string path)
         {
             return new Product
             {
@@ -109,25 +111,26 @@ namespace Shop.Web.Controllers
 
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Products/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
-                return NotFound();
+                return new NotFoundViewResult("ProductNotFound");
             }
 
             var product = await this.productRepository.GetByIdAsync(id.Value);
             if (product == null)
             {
-                return NotFound();
+                return new NotFoundViewResult("ProductNotFound");
             }
 
-            var view = this.toProductViewModel(product);
+            var view = this.ToProductViewModel(product);
             return View(view);
         }
 
-        private ProductViewModel toProductViewModel(Product product)
+        private ProductViewModel ToProductViewModel(Product product)
         {
             return new ProductViewModel
             {
@@ -172,7 +175,7 @@ namespace Shop.Web.Controllers
                         path = $"~/images/Products/{file}";
                     }
 
-                    var product = this.toProduct(view, path);
+                    var product = this.ToProduct(view, path);
 
                    
                     product.User = await this.userHelper.GetUserByEmailAsync(this.User.Identity.Name);
@@ -195,6 +198,7 @@ namespace Shop.Web.Controllers
             return View(view);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Products/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -221,6 +225,12 @@ namespace Shop.Web.Controllers
             await this.productRepository.DeleteAsync(product);
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult ProductNotFound()
+        {
+            return this.View();
+        }
+
     }
 
 }
