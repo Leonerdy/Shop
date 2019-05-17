@@ -17,11 +17,14 @@
         [Display(Name = "Image")]
         public string ImageUrl { get; set; }
 
+        
         [Display(Name = "Last Purchase")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? LastPurchase { get; set; }
 
         [Display(Name = "Last Sale")]
-        public DateTime? LastSale { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+         public DateTime? LastSale { get; set; }
 
         [Display(Name = "Is Availabe?")]
         public bool IsAvailabe { get; set; }

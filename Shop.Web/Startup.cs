@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -35,6 +37,8 @@ namespace Shop.Web
 
             services.AddIdentity<User, IdentityRole>(cfg =>
             {
+                cfg.Tokens.AuthenticatorTokenProvider = TokenOptions.DefaultAuthenticatorProvider;
+                cfg.SignIn.RequireConfirmedEmail = true;
                 cfg.User.RequireUniqueEmail = true;
                 cfg.Password.RequireDigit = false;
                 cfg.Password.RequiredUniqueChars = 0;
@@ -43,6 +47,7 @@ namespace Shop.Web
                 cfg.Password.RequireUppercase = false;
                 cfg.Password.RequiredLength = 6;
             })
+            .AddDefaultTokenProviders()
             .AddEntityFrameworkStores<DataContext>();
 
             services.AddAuthentication()
@@ -65,14 +70,11 @@ namespace Shop.Web
             });
 
             services.AddTransient<SeedDb>();
-
             services.AddScoped<IProductRepository, ProductRepository>();
-
             services.AddScoped<ICountryRepository, CountryRepository>();
-
             services.AddScoped<IOrderRepository, OrderRepository>();
-
             services.AddScoped<IUserHelper, UserHelper>();
+            services.AddScoped<IMailHelper, MailHelper>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -95,6 +97,20 @@ namespace Shop.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+
+            //var supportedCultures = new[] {
+            //    new CultureInfo("pt-BR"),
+            //    new CultureInfo("en-US"),
+            //    new CultureInfo("en-AU"),
+            //    new CultureInfo("en-GB"),
+            //    new CultureInfo("en"),
+            //};
+            //app.UseRequestLocalization(new RequestLocalizationOptions
+            //{
+            //    DefaultRequestCulture = new RequestCulture(culture: "en-US"),
+            //    SupportedCultures = supportedCultures,
+            //    SupportedUICultures = supportedCultures
+            //});
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
