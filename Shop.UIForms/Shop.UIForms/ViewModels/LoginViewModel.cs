@@ -1,4 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using Newtonsoft.Json;
+using Shop.Common.Helpers;
 using Shop.Common.Models;
 using Shop.Common.Services;
 using Shop.UIForms.Views;
@@ -20,6 +22,8 @@ namespace Shop.UIForms.ViewModels
         private bool isEnabled;
         private readonly ApiService apiService;
 
+        public bool IsRemember { get; set; }
+
         public bool IsRunning
         {
             get => this.isRunning;
@@ -32,17 +36,18 @@ namespace Shop.UIForms.ViewModels
             set => this.SetValue(ref this.isEnabled, value);
         }
 
-
-
         public ICommand LoginCommand => new RelayCommand(this.Login);
+
+        public ICommand RegisterCommand => new RelayCommand(this.Register);
+
+        public ICommand RememberPasswordCommand => new RelayCommand(this.RememberPassword);
+
 
         public LoginViewModel()
         {
             this.apiService = new ApiService();
             this.IsEnabled = true;
-
-            this.Email = "enge.leon@gmail.com";
-            this.Password = "123456";
+            this.IsRemember = true;
         }
 
         private async void Login()
@@ -82,13 +87,47 @@ namespace Shop.UIForms.ViewModels
             }
 
             var token = (TokenResponse)response.Result;
+
+            var response2 = await this.apiService.GetUserByEmailAsync(
+            url,
+            "/api",
+            "/Account/GetUserByEmail",
+            this.Email,
+            "bearer",
+            token.Token);
+
+            var user = (User)response2.Result;
+
+
             var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.User = user;
             mainViewModel.Token = token;
             mainViewModel.Products = new ProductsViewModel();
             mainViewModel.UserEmail = this.Email;
             mainViewModel.UserPassword = this.Password;
+
+            Settings.IsRemember = this.IsRemember;
+            Settings.UserEmail = this.Email;
+            Settings.UserPassword = this.Password;
+            Settings.Token = JsonConvert.SerializeObject(token);
+            Settings.User = JsonConvert.SerializeObject(user);
+
+
             Application.Current.MainPage = new MasterPage();
 
         }
+
+        private async void Register()
+        {
+            MainViewModel.GetInstance().Register = new RegisterViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new RegisterPage());
+        }
+
+        private async void RememberPassword()
+        {
+            MainViewModel.GetInstance().RememberPassword = new RememberPasswordViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new RememberPasswordPage());
+        }
+
     }
 }

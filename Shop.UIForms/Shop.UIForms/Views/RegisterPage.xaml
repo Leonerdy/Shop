@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+         	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+         	x:Class="Shop.UIForms.Views.RegisterPage"
+         	BindingContext="{Binding Main, Source={StaticResource Locator}}"
+         	Title="Register New User">
+    <ContentPage.Content>
+        <ScrollView
+        	BindingContext="{Binding Register}">
+            <StackLayout
+            	Padding="8">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                    	Grid.Column="0"
+                    	Grid.Row="0"
+                    	Text="First name"
+                    	VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                    	Grid.Column="1"
+                    	Grid.Row="0"
+                    	Placeholder="entre com seu nome..."
+                    	Text="{Binding FirstName}">
+                    </Entry>
+                    <Label
+                    	Grid.Column="0"
+                    	Grid.Row="1"
+                    	Text="Last name"
+                    	VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                    	Grid.Column="1"
+                    	Grid.Row="1"
+                    	Placeholder="Entre com seu sobrenome..."
+                    	Text="{Binding LastName}">
+                    </Entry>
+                    <Label
+                    	Grid.Column="0"
+                    	Grid.Row="2"
+                    	Text="Email"
+                    	VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                    	Grid.Column="1"
+                    	Grid.Row="2"
+                    	Keyboard="Email"
+                    	Placeholder="Entre com seu email..."
+                    	Text="{Binding Email}">
+                    </Entry>
+                    <Label
+                    	Grid.Column="0"
+                    	Grid.Row="3"
+                    	Text="País"
+                    	VerticalOptions="Center">
+                    </Label>
+                    <Picker
+                    	Grid.Column="1"
+                    	Grid.Row="3"
+                    	ItemDisplayBinding="{Binding Name}"
+                    	ItemsSource="{Binding Countries}"
+                    	SelectedItem="{Binding Country}"
+                    	Title="Selecione um país...">
+                    </Picker>
+                    <Label
+                    	Grid.Column="0"
+                    	Grid.Row="4"
+                    	Text="City"
+                    	VerticalOptions="Center">
+                    </Label>
+                    <Picker
+                    	Grid.Column="1"
+                    	Grid.Row="4"
+                    	ItemDisplayBinding="{Binding Name}"
+                    	ItemsSource="{Binding Cities}"
+                    	SelectedItem="{Binding City}"
+                    	Title="Select a city...">
+                    </Picker>
+                    <Label
+                    	Grid.Column="0"
+                    	Grid.Row="5"
+                    	Text="Address"
+                    	VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                    	Grid.Column="1"
+                    	Grid.Row="5"
+                    	Keyboard="Email"
+                    	Placeholder="Entre com seu endereço..."
+                    	Text="{Binding Address}">
+                    </Entry>
+                    <Label
+                    	Grid.Column="0"
+                    	Grid.Row="6"
+                    	Text="Telefone"
+                    	VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                    	Grid.Column="1"
+                    	Grid.Row="6"
+                    	Keyboard="Telephone"
+                    	Placeholder="Entre com seu número de telefone..."
+                    	Text="{Binding Phone}">
+                    </Entry>
+                    <Label
+                    	Grid.Column="0"
+                    	Grid.Row="7"
+                    	Text="Senha"
+                    	VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                    	Grid.Column="1"
+                    	Grid.Row="7"
+                    	IsPassword="True"
+                    	Placeholder="Entre com sua senha..."
+                    	Text="{Binding Password}">
+                    </Entry>
+                    <Label
+                    	Grid.Column="0"
+                    	Grid.Row="8"
+                    	Text="Senha confirma"
+                    	VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                    	Grid.Column="1"
+                    	Grid.Row="8"
+                    	IsPassword="True"
+                    	Placeholder="Entre com sua senha confirma..."
+                    	Text="{Binding Confirm}">
+                    </Entry>
+                </Grid>
+                <ActivityIndicator
+                	IsRunning="{Binding IsRunning}"
+                	VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+                <Button
+                	BackgroundColor="Navy"
+                	BorderRadius="23"
+                	Command="{Binding RegisterCommand}"
+                	HeightRequest="46"
+                	HorizontalOptions="FillAndExpand"
+                	IsEnabled="{Binding IsEnabled}"
+                	Text="Registrar novo usuário"
+                	TextColor="White">
+                </Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

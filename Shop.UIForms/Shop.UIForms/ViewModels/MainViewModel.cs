@@ -9,10 +9,19 @@ using System.Windows.Input;
 
 namespace Shop.UIForms.ViewModels
 {
-    public class MainViewModel 
+    public class MainViewModel //: BaseViewModel
     {
 
         private static MainViewModel instance;
+
+        //private User user;
+
+        //public User User
+        //{
+        //    get => this.user;
+        //    set => this.SetValue(ref this.user, value);
+        //}
+
 
         public string UserEmail { get; set; }
 
@@ -29,12 +38,19 @@ namespace Shop.UIForms.ViewModels
 
         public EditProductViewModel EditProduct { get; set; }
 
-        public ICommand AddProductCommand { get { return new RelayCommand(this.GoAddProduct); } }
+        public ChangePasswordViewModel ChangePassword { get; set; }
 
+        public User User { get; set; }
+
+        public RegisterViewModel Register { get; set; }
+
+        public ProfileViewModel Profile { get; set; }
+
+        public ICommand AddProductCommand { get { return new RelayCommand(this.GoAddProduct); } }
 
         public TokenResponse Token { get; set; }
 
-        
+        public RememberPasswordViewModel RememberPassword { get; set; }
 
         public MainViewModel()
         {
@@ -57,6 +73,15 @@ namespace Shop.UIForms.ViewModels
                 PageName = "AboutPage",
                 Title = "Sobre"
             },
+            
+
+            new Menu
+            {
+                Icon = "ic_person",
+                PageName = "ProfilePage",
+                Title = "Modificar usuário"
+            },
+
 
             new Menu
             {

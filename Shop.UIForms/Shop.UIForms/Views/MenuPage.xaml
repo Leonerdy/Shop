@@ -12,6 +12,13 @@
             	HeightRequest="150"
             	Source="speed">
             </Image>
+            <Label
+                FontAttributes="Bold"
+	            FontSize="Large"
+	            Text="{Binding User.FullName, StringFormat='Bem vindo: {0}'}"
+	            TextColor="Black">
+            </Label>
+
             <ListView
                 BackgroundColor="Transparent"
             	ItemsSource="{Binding Menus}"
