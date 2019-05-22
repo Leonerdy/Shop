@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
          	 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
          	 x:Class="Shop.UIForms.Views.ProductsPage"
+             BackgroundColor="{StaticResource BackgroundColor}"
          	 BindingContext="{Binding Main, Source={StaticResource Locator}}"
          	 Title="Produtos">
     <ContentPage.ToolbarItems>
@@ -18,7 +19,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
+                            <Grid Padding="8">
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SelectProductCommand}"/>
                                 </Grid.GestureRecognizers>

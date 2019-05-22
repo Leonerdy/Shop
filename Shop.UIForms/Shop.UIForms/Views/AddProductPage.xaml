@@ -41,14 +41,14 @@
                     <Label
                     	Grid.Column="0"
                     	Grid.Row="1"
-                    	Text="Price"
+                    	Text="Preço"
                     	VerticalOptions="Center">
                     </Label>
                     <Entry
                     	Grid.Column="1"
                     	Grid.Row="1"
                     	Keyboard="Numeric"
-                    	Placeholder="preço Produto..."
+                    	Placeholder="Preço produto..."
                     	Text="{Binding Price}">
                     </Entry>
                 </Grid>
@@ -62,7 +62,7 @@
                 	Command="{Binding SaveCommand}"
                 	HeightRequest="46"
                 	IsEnabled="{Binding IsEnabled}"
-                	Text="Save"
+                	Text="Salvar"
                 	TextColor="White">
                 </Button>
             </StackLayout>

@@ -3,7 +3,7 @@
          	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
          	x:Class="Shop.UIForms.Views.EditProductPage"
          	BindingContext="{Binding Main, Source={StaticResource Locator}}"
-         	Title="Edit Product">
+         	Title="Editar Produto">
     <ContentPage.Content>
         <ScrollView
         	BindingContext="{Binding EditProduct}">
@@ -26,26 +26,26 @@
                     <Label
                     	Grid.Column="0"
                     	Grid.Row="0"
-                    	Text="Name"
+                    	Text="Nome"
                     	VerticalOptions="Center">
                     </Label>
                     <Entry
                     	Grid.Column="1"
                     	Grid.Row="0"
-                    	Placeholder="Product name..."
+                    	Placeholder="Nome produto..."
                     	Text="{Binding Product.Name}">
                     </Entry>
                     <Label
                     	Grid.Column="0"
                     	Grid.Row="1"
-                    	Text="Price"
+                    	Text="Preço"
                     	VerticalOptions="Center">
                     </Label>
                     <Entry
                     	Grid.Column="1"
                     	Grid.Row="1"
                     	Keyboard="Numeric"
-                    	Placeholder="Product price..."
+                    	Placeholder="Preço produto..."
                     	Text="{Binding Product.Price}">
                     </Entry>
                 </Grid>
@@ -62,7 +62,7 @@
                     	HeightRequest="46"
                     	HorizontalOptions="FillAndExpand"
                     	IsEnabled="{Binding IsEnabled}"
-                    	Text="Save"
+                    	Text="Salvar"
                     	TextColor="White">
                     </Button>
                     <Button
@@ -72,7 +72,7 @@
                     	HeightRequest="46"
                     	HorizontalOptions="FillAndExpand"
                     	IsEnabled="{Binding IsEnabled}"
-                    	Text="Delete"
+                    	Text="Deletar"
                     	TextColor="White">
                     </Button>
                 </StackLayout>

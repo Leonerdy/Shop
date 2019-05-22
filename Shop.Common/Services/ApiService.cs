@@ -189,13 +189,13 @@
         }
 
         public async Task<Response> PutAsync<T>(
-    string urlBase,
-    string servicePrefix,
-    string controller,
-    int id,
-    T model,
-    string tokenType,
-    string accessToken)
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id,
+            T model,
+            string tokenType,
+            string accessToken)
         {
             try
             {

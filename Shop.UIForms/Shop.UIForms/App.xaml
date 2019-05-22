@@ -10,6 +10,16 @@
 
             <!-- Parameters -->
             <x:String x:Key="UrlAPI">https://shopspeed.azurewebsites.net</x:String>
+
+            <!-- Colors --> 
+            <Color x:Key="MainColor">#2D80CC</Color>
+            <Color x:Key="FontColor">#426280</Color>
+            <Color x:Key="AccentColor1">#38A0FF</Color>
+            <Color x:Key="AccentColor2">#1C5080</Color>
+            <Color x:Key="BackgroundColor">#C3DFFA</Color>
+            <!-- Menu Colors -->
+            <Color x:Key="MenuColor">#1C5080</Color>
+            <Color x:Key="MenuFontColor">#C3DFFA</Color>
         </ResourceDictionary>
 
     </Application.Resources>

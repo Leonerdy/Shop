@@ -67,14 +67,7 @@ namespace Shop.UIForms.ViewModels
         {
             var menus = new List<Menu>
         {
-            new Menu
-            {
-                Icon = "info",
-                PageName = "AboutPage",
-                Title = "Sobre"
-            },
             
-
             new Menu
             {
                 Icon = "ic_person",
@@ -88,6 +81,13 @@ namespace Shop.UIForms.ViewModels
                 Icon = "setup",
                 PageName = "SetupPage",
                 Title = "Configuração"
+            },
+
+            new Menu
+            {
+                Icon = "info",
+                PageName = "AboutPage",
+                Title = "Sobre"
             },
 
             new Menu

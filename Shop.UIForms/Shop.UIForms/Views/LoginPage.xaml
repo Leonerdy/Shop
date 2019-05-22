@@ -64,7 +64,7 @@
     	                HeightRequest="46"
     	                HorizontalOptions="FillAndExpand"
     	                IsEnabled="{Binding IsEnabled}"
-    	                Text="Login"
+    	                Text="Entrar"
     	                TextColor="White">
                     </Button>
                     <Button

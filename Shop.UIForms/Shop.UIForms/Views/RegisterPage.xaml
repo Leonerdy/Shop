@@ -3,7 +3,7 @@
          	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
          	x:Class="Shop.UIForms.Views.RegisterPage"
          	BindingContext="{Binding Main, Source={StaticResource Locator}}"
-         	Title="Register New User">
+         	Title="Registrar novo usuário">
     <ContentPage.Content>
         <ScrollView
         	BindingContext="{Binding Register}">
@@ -17,19 +17,19 @@
                     <Label
                     	Grid.Column="0"
                     	Grid.Row="0"
-                    	Text="First name"
+                    	Text="Nome"
                     	VerticalOptions="Center">
                     </Label>
                     <Entry
                     	Grid.Column="1"
                     	Grid.Row="0"
-                    	Placeholder="entre com seu nome..."
+                    	Placeholder="Entre com seu nome..."
                     	Text="{Binding FirstName}">
                     </Entry>
                     <Label
                     	Grid.Column="0"
                     	Grid.Row="1"
-                    	Text="Last name"
+                    	Text="Sobrenome"
                     	VerticalOptions="Center">
                     </Label>
                     <Entry
@@ -68,7 +68,7 @@
                     <Label
                     	Grid.Column="0"
                     	Grid.Row="4"
-                    	Text="City"
+                    	Text="Cidade"
                     	VerticalOptions="Center">
                     </Label>
                     <Picker
@@ -77,18 +77,17 @@
                     	ItemDisplayBinding="{Binding Name}"
                     	ItemsSource="{Binding Cities}"
                     	SelectedItem="{Binding City}"
-                    	Title="Select a city...">
+                    	Title="Selecione uma cidade...">
                     </Picker>
                     <Label
                     	Grid.Column="0"
                     	Grid.Row="5"
-                    	Text="Address"
+                    	Text="Endereço"
                     	VerticalOptions="Center">
                     </Label>
                     <Entry
                     	Grid.Column="1"
                     	Grid.Row="5"
-                    	Keyboard="Email"
                     	Placeholder="Entre com seu endereço..."
                     	Text="{Binding Address}">
                     </Entry>
@@ -121,14 +120,14 @@
                     <Label
                     	Grid.Column="0"
                     	Grid.Row="8"
-                    	Text="Senha confirma"
+                    	Text="Confirmar senha"
                     	VerticalOptions="Center">
                     </Label>
                     <Entry
                     	Grid.Column="1"
                     	Grid.Row="8"
                     	IsPassword="True"
-                    	Placeholder="Entre com sua senha confirma..."
+                    	Placeholder="Entre com a confirmação da senha..."
                     	Text="{Binding Confirm}">
                     </Entry>
                 </Grid>
