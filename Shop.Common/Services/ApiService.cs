@@ -368,11 +368,11 @@
                     };
                 }
 
-                var user = JsonConvert.DeserializeObject<User>(answer);
+                var roleRequest = JsonConvert.DeserializeObject<User>(answer);
                 return new Response
                 {
                     IsSuccess = true,
-                    Result = user,
+                    Result = roleRequest,
                 };
             }
             catch (Exception ex)
@@ -384,6 +384,14 @@
                 };
             }
         }
+
+        
+
+        private object ToString<T>(string answer)
+        {
+            return answer;
+        }
+
         public async Task<Response> PutAsync<T>(
             string urlBase,
             string servicePrefix,

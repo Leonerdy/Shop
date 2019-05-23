@@ -1,6 +1,7 @@
 ﻿namespace Shop.UIForms.ViewModels
 {
     using System;
+    using System.Collections.Generic;
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
     using Shop.Common.Helpers;
@@ -13,11 +14,36 @@
 
         private async void SelectMenu()
         {
+            
+            
             App.Master.IsPresented = false;
             var mainViewModel = MainViewModel.GetInstance();
 
             switch (this.PageName)
             {
+                case "OrderPage":
+                    await App.Navigator.PushAsync(new OrderPage());
+                    break;
+
+                case "AddProductPage":
+
+                    if (mainViewModel.User.IsAdmin)
+                    {
+                        
+                        await App.Navigator.PushAsync(new AddProductPage());
+                        break;
+                    }
+                    else
+                    {
+                        await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    "Você não pode acessar essa página",
+                    "Accept");
+                        return;
+                    }
+
+
+
                 case "SetupPage":
                     await App.Navigator.PushAsync(new SetupPage());
                     break;

@@ -35,6 +35,12 @@
             
         }
 
+        public async Task<bool> GetUserRoleAsync(User user, string role )
+        {
+            return await this.userManager.IsInRoleAsync(user, role);
+
+        }
+
         public async Task<SignInResult> LoginAsync(LoginViewModel model)
         {
             return await this.signInManager.PasswordSignInAsync(

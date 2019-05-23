@@ -62,6 +62,7 @@
         [JsonProperty("address")]
         public string Address { get; set; }
 
+        [JsonProperty("isAdmin")]
         public bool IsAdmin { get; set; }
 
         public string FullName { get { return $"{this.FirstName} {this.LastName}"; } }

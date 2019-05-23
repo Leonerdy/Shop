@@ -40,7 +40,7 @@
                     Message = "Bad request"
                 });
             }
-
+            
             var user = await this.userHelper.GetUserByEmailAsync(request.Email);
             if (user != null)
             {
@@ -144,8 +144,9 @@
                     Message = "Bad request"
                 });
             }
-
+            string role = "Admin";
             var user = await this.userHelper.GetUserByEmailAsync(request.Email);
+            var userRole = await this.userHelper.GetUserRoleAsync(user, role );
             if (user == null)
             {
                 return this.BadRequest(new Response
@@ -154,9 +155,41 @@
                     Message = "User don't exists."
                 });
             }
+            user.IsAdmin = userRole;
 
             return Ok(user);
         }
+
+        //[HttpPost]
+        //[Route("GetUserRole")]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //public async Task<IActionResult> GetUserRole([FromBody] User user)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return this.BadRequest(new Response
+        //        {
+        //            IsSuccess = false,
+        //            Message = "Bad request"
+        //        });
+        //    }
+        //    var useremail = await this.userHelper.GetUserByEmailAsync(user.Email);
+        //    var userRole = await this.userHelper.GetUserRoleAsync(useremail);
+
+        //    if (useremail == null)
+        //    {
+        //        return this.BadRequest(new Response
+        //        {
+        //            IsSuccess = false,
+        //            Message = "User don't exists."
+        //        });
+        //    }
+
+        //    //var userRole = await this.userHelper.GetUserRoleAsync(request.user);
+
+        //    return Ok(userRole);
+        //}
+
         [HttpPut]
         public async Task<IActionResult> PutUser([FromBody] User user)
         {

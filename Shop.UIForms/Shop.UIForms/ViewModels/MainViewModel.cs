@@ -36,6 +36,8 @@ namespace Shop.UIForms.ViewModels
 
         public AddProductViewModel AddProduct { get; set; }
 
+        //public OrderViewModel AddOrder { get; set; }
+
         public EditProductViewModel EditProduct { get; set; }
 
         public ChangePasswordViewModel ChangePassword { get; set; }
@@ -48,9 +50,12 @@ namespace Shop.UIForms.ViewModels
 
         public ICommand AddProductCommand { get { return new RelayCommand(this.GoAddProduct); } }
 
+        public ICommand AddOrderCommand { get { return new RelayCommand(this.GoOrder); } }
+
         public TokenResponse Token { get; set; }
 
         public RememberPasswordViewModel RememberPassword { get; set; }
+        
 
         public MainViewModel()
         {
@@ -63,11 +68,29 @@ namespace Shop.UIForms.ViewModels
             this.AddProduct = new AddProductViewModel();
             await App.Navigator.PushAsync(new AddProductPage());
         }
+        private async void GoOrder()
+        {
+            //this.AddOrder = new OrderViewModel();
+            await App.Navigator.PushAsync(new OrderPage());
+        }
+
+
         private void LoadMenus()
         {
             var menus = new List<Menu>
         {
-            
+            new Menu
+            {
+                Icon = "ic_build",
+                PageName = "OrderPage",
+                Title = "Pedido de serviço"
+            },
+            new Menu
+            {
+                Icon = "ic_add_shopping_cart",
+                PageName = "AddProductPage",
+                Title = "Adicionar Produtos"
+            },
             new Menu
             {
                 Icon = "ic_person",

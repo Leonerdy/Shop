@@ -18,6 +18,8 @@ namespace Shop.UIForms.ViewModels
 
         public string Password { get; set; }
 
+        public string IsAdmin { get; set; }
+
         private bool isRunning;
         private bool isEnabled;
         private readonly ApiService apiService;
@@ -98,10 +100,13 @@ namespace Shop.UIForms.ViewModels
 
             var user = (User)response2.Result;
 
+            
 
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.User = user;
+
             mainViewModel.Token = token;
+           
             mainViewModel.Products = new ProductsViewModel();
             mainViewModel.UserEmail = this.Email;
             mainViewModel.UserPassword = this.Password;

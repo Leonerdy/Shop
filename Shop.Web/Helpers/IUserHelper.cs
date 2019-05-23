@@ -12,6 +12,8 @@ namespace Shop.Web.Helpers
     {
         Task<User> GetUserByEmailAsync(string email);
 
+        Task<bool> GetUserRoleAsync(User user, string role);
+
         Task<IdentityResult> AddUserAsync(User user, string password);
 
         Task<SignInResult> LoginAsync(LoginViewModel model);
