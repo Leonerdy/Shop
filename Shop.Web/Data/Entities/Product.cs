@@ -43,7 +43,7 @@
                     return null;
                 }
 
-                return $"https://shopspeed.azurewebsites.net{this.ImageUrl.Substring(1)}";
+                return $"https://lojaspeedservice.azurewebsites.net{this.ImageUrl.Substring(1)}";
             }
         }
     }

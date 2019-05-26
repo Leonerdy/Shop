@@ -9,7 +9,7 @@
             <infra:InstanceLocator x:Key="Locator"/>
 
             <!-- Parameters -->
-            <x:String x:Key="UrlAPI">https://shopspeed.azurewebsites.net</x:String>
+            <x:String x:Key="UrlAPI">https://lojaspeedservice.azurewebsites.net/</x:String>
 
             <!-- Colors --> 
             <Color x:Key="MainColor">#2D80CC</Color>

@@ -12,6 +12,31 @@
 
     public class RegisterViewModel : BaseViewModel
     {
+
+        //private ContactsInfo contactsInfo;
+        //public ContactsInfo ContactsInfo
+        //{
+        //    get => this.contactsInfo;
+        //    set => this.SetValue(ref this.contactsInfo, value);
+        //}
+
+
+        private string firstName;
+
+        private string lastName;
+
+        private string email;
+
+        private string address;
+
+        private string phone;
+
+        private string password;
+
+        private string confirm;
+
+        private int cityId;
+
         private bool isRunning;
         private bool isEnabled;
         private ObservableCollection<Country> countries;
@@ -20,19 +45,21 @@
         private City city;
         private readonly ApiService apiService;
 
-        public string FirstName { get; set; }
+        
 
-        public string LastName { get; set; }
+        //public string FirstName { get; set; }
 
-        public string Email { get; set; }
+        //public string LastName { get; set; }
 
-        public string Address { get; set; }
+        //public string Email { get; set; }
 
-        public string Phone { get; set; }
+        //public string Address { get; set; }
 
-        public string Password { get; set; }
+        //public string Phone { get; set; }
 
-        public string Confirm { get; set; }
+        //public string Password { get; set; }
+
+        //public string Confirm { get; set; }
 
         public Country Country
         {
@@ -63,6 +90,78 @@
             set => this.SetValue(ref this.cities, value);
         }
 
+
+        public string FirstName
+        {
+            get { return this.firstName; }
+            set
+            {
+                this.firstName = value;
+            }
+        }
+
+        public string Phone
+        {
+            get { return this.phone; }
+            set
+            {
+                this.phone = value;
+            }
+        }
+        public string LastName
+        {
+            get { return this.lastName; }
+            set
+            {
+                this.lastName = value;
+            }
+        }
+
+        public string Password
+        {
+            get { return password; }
+            set
+            {
+                this.password = value;
+            }
+        }
+
+        public string Email
+        {
+            get { return email; }
+            set
+            {
+                email = value;
+            }
+        }
+
+        public string Address
+        {
+            get { return address; }
+            set
+            {
+                address = value;
+            }
+        }
+
+        public int CityId
+        {
+            get { return cityId; }
+            set
+            {
+                cityId = value;
+            }
+        }
+        public string Confirm
+        {
+            get { return confirm; }
+            set
+            {
+                confirm = value;
+            }
+        }
+
+
         public bool IsRunning
         {
             get => this.isRunning;
@@ -82,6 +181,7 @@
             this.apiService = new ApiService();
             this.IsEnabled = true;
             this.LoadCountries();
+            //this.contactsInfo = new ContactsInfo();
         }
 
         private async void LoadCountries()
@@ -108,6 +208,7 @@
             }
 
             var myCountries = (List<Country>)response.Result;
+            //this.Countries
             this.Countries = new ObservableCollection<Country>(myCountries);
         }
 

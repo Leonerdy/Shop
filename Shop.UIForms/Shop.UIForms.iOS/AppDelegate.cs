@@ -1,4 +1,7 @@
-﻿using System;
+using Syncfusion.XForms.iOS.DataForm;
+using Syncfusion.XForms.iOS.Buttons;
+using Syncfusion.SfBusyIndicator.XForms.iOS;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,7 +25,10 @@ namespace Shop.UIForms.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.Init();
+global::Xamarin.Forms.Forms.Init();
+SfDataFormRenderer.Init();
+SfButtonRenderer.Init();
+SfBusyIndicatorRenderer.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

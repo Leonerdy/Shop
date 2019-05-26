@@ -58,14 +58,8 @@
                 this.IsRefreshing = false;
                 return;
             }
-
-            
             this.myProducts = (List<Product>)response.Result;
             this.RefresProductsList();
-            
-
-
-
         }
 
         public void AddProductToList(Product product)

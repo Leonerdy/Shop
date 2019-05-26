@@ -22,11 +22,9 @@ namespace Shop.UIForms.ViewModels
         //    set => this.SetValue(ref this.user, value);
         //}
 
-
         public string UserEmail { get; set; }
 
         public string UserPassword { get; set; }
-
 
         public ObservableCollection<MenuItemViewModel> Menus { get; set; }
 
@@ -36,7 +34,7 @@ namespace Shop.UIForms.ViewModels
 
         public AddProductViewModel AddProduct { get; set; }
 
-        //public OrderViewModel AddOrder { get; set; }
+        
 
         public EditProductViewModel EditProduct { get; set; }
 
@@ -46,11 +44,13 @@ namespace Shop.UIForms.ViewModels
 
         public RegisterViewModel Register { get; set; }
 
+        public ContactsInfo ContactsInfo { get; set; }
+
         public ProfileViewModel Profile { get; set; }
 
         public ICommand AddProductCommand { get { return new RelayCommand(this.GoAddProduct); } }
 
-        public ICommand AddOrderCommand { get { return new RelayCommand(this.GoOrder); } }
+       
 
         public TokenResponse Token { get; set; }
 
@@ -59,74 +59,77 @@ namespace Shop.UIForms.ViewModels
 
         public MainViewModel()
         {
+            
             instance = this;
             this.LoadMenus();
         }
 
         private async void GoAddProduct()
         {
-            this.AddProduct = new AddProductViewModel();
-            await App.Navigator.PushAsync(new AddProductPage());
+            if (instance.User.IsAdmin)
+            {
+                this.AddProduct = new AddProductViewModel();
+                await App.Navigator.PushAsync(new AddProductPage());
+            }
+            else
+            {
+                await App.Navigator.PushAsync(new OrderPage());
+            }
         }
-        private async void GoOrder()
-        {
-            //this.AddOrder = new OrderViewModel();
-            await App.Navigator.PushAsync(new OrderPage());
-        }
+        //private async void GoOrder()
+        //{
+        //    //this.AddOrder = new OrderViewModel();
+        //    await App.Navigator.PushAsync(new OrderPage());
+        //}
 
 
         private void LoadMenus()
         {
-            var menus = new List<Menu>
-        {
-            new Menu
-            {
-                Icon = "ic_build",
-                PageName = "OrderPage",
-                Title = "Pedido de serviço"
-            },
-            new Menu
-            {
-                Icon = "ic_add_shopping_cart",
-                PageName = "AddProductPage",
-                Title = "Adicionar Produtos"
-            },
-            new Menu
-            {
-                Icon = "ic_person",
-                PageName = "ProfilePage",
-                Title = "Modificar usuário"
-            },
+                var menus1 = new List<Menu>
+                {
+                    new Menu
+                    {
+                        Icon = "ic_build",
+                        PageName = "OrderPage",
+                        Title = "Pedido de serviço"
+                    },
+
+                    new Menu
+                    {
+                        Icon = "ic_person",
+                        PageName = "ProfilePage",
+                        Title = "Modificar usuário"
+                    },
 
 
-            new Menu
-            {
-                Icon = "setup",
-                PageName = "SetupPage",
-                Title = "Configuração"
-            },
+                    new Menu
+                    {
+                        Icon = "setup",
+                        PageName = "SetupPage",
+                        Title = "Configuração"
+                    },
 
-            new Menu
-            {
-                Icon = "info",
-                PageName = "AboutPage",
-                Title = "Sobre"
-            },
+                    new Menu
+                    {
+                        Icon = "info",
+                        PageName = "AboutPage",
+                        Title = "Sobre"
+                    },
 
-            new Menu
-            {
-                Icon = "exit",
-                PageName = "LoginPage",
-                Title = "Sair"
-            }
-        };
+                    new Menu
+                    {
+                        Icon = "exit",
+                        PageName = "LoginPage",
+                        Title = "Sair"
+                    }
+                };
 
-            this.Menus = new ObservableCollection<MenuItemViewModel>(menus.Select(m => new MenuItemViewModel
-            {
-                Icon = m.Icon,
-                PageName = m.PageName,
-                Title = m.Title
-            }).ToList());
+                this.Menus = new ObservableCollection<MenuItemViewModel>(menus1.Select(m => new MenuItemViewModel
+                {
+                    Icon = m.Icon,
+                    PageName = m.PageName,
+                    Title = m.Title
+                }).ToList());
         }
 
 

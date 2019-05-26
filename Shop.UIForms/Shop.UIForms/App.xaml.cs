@@ -7,7 +7,7 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+//[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Shop.UIForms
 {
     public partial class App : Application
@@ -18,7 +18,13 @@ namespace Shop.UIForms
 
         public App()
         {
+            //Register Syncfusion license
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTA0MDI1QDMxMzcyZTMxMmUzMFI4Z2s0NWJVcFVscUY5bEZHZ2oveXJZMEF4dFlRL0VXUzhVRFc2SDRwWUk9");
             InitializeComponent();
+
+    #if DEBUG
+            HotReloader.Current.Start(this);
+    #endif
 
             if (Settings.IsRemember)
             {

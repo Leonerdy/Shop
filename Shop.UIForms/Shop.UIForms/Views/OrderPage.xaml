@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="Shop.UIForms.Views.OrderPage"
              BackgroundColor="{StaticResource BackgroundColor}"
-             Title="Nuevo Pedido"
+             Title="Novo pedido"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ScrollView BindingContext="{Binding NewOrder}">
         <StackLayout Padding="8">
@@ -21,26 +21,32 @@
              Text="{Binding Client, Mode=TwoWay}"
              BackgroundColor="White"></Entry>
             <Label TextColor="{StaticResource FontColor}" 
-             Text="Descripción"></Label>
+             Text="Descrição"></Label>
             <Editor TextColor="{StaticResource FontColor}"
               HeightRequest="100"
               Text="{Binding Description, Mode=TwoWay}"
               BackgroundColor="White"></Editor>
             <Label TextColor="{StaticResource FontColor}"
-             Text="Datos de envío"></Label>
+             Text="Dados de envio"></Label>
             <Editor TextColor="{StaticResource FontColor}"
               Text="{Binding DeliveryInformation, Mode=TwoWay}"
               HeightRequest="100"
               BackgroundColor="White"></Editor>
             <Label TextColor="{StaticResource FontColor}" 
-             Text="Fecha Entrega"></Label>
+             Text="Ficha de entrega"></Label>
             <DatePicker
         BackgroundColor="White"
         Date="{Binding DeliveryDate, Mode=TwoWay}">
                 <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
             </DatePicker>
-            <Button Command="{Binding SaveCommand}"
-        Text="Guardar"></Button>
+            <Button BackgroundColor="Navy"
+                	BorderRadius="23"
+                	Command="{Binding SaveCommand}"
+                	HeightRequest="46"
+                	IsEnabled="{Binding IsEnabled}"
+                	Text="Salvar"
+                	TextColor="White">
+            </Button>
         </StackLayout>
     </ScrollView>
 </ContentPage>

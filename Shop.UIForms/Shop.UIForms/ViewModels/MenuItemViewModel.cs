@@ -10,6 +10,8 @@
 
     public class MenuItemViewModel : Common.Models.Menu
     {
+        public AddProductViewModel AddProduct { get; set; }
+
         public ICommand SelectMenuCommand => new RelayCommand(this.SelectMenu);
 
         private async void SelectMenu()
@@ -26,10 +28,9 @@
                     break;
 
                 case "AddProductPage":
-
+                    this.AddProduct = new AddProductViewModel();
                     if (mainViewModel.User.IsAdmin)
                     {
-                        
                         await App.Navigator.PushAsync(new AddProductPage());
                         break;
                     }
@@ -41,8 +42,6 @@
                     "Accept");
                         return;
                     }
-
-
 
                 case "SetupPage":
                     await App.Navigator.PushAsync(new SetupPage());
@@ -68,5 +67,4 @@
             }
         }
     }
-
 }

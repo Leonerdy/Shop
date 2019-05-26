@@ -11,8 +11,12 @@
 
   <ItemGroup>
     <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.1.0.48" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="17.1.0.48" />
+    <PackageReference Include="Syncfusion.Xamarin.SfDataForm" Version="17.1.0.48" />
     <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
-    <PackageReference Include="Xamarin.Forms" Version="3.6.0.344457" />
+    <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />
+    <PackageReference Include="Xamarin.HotReload" Version="1.2.9" />
   </ItemGroup>
 
   <ItemGroup>
