@@ -16,7 +16,7 @@
         public bool IsRunning
         {
             get => this.isRunning;
-            set => this.SetValue(ref this.isRunning, value);
+            set => this.SetValue(ref this.isRunning, value);//comment
         }
 
         public bool IsEnabled

@@ -42,6 +42,7 @@ namespace Shop.UIForms
                     this.MainPage = new MasterPage();
                     return;
                 }
+                
             }
 
             MainViewModel.GetInstance().Login = new LoginViewModel();
