@@ -9,8 +9,7 @@ Screenshots -
 
 ![all](ScreenShots/produtos.png)
 ===
-![all](ScreenShots/users.png)
-===
+
 ![all](ScreenShots/orders.png)
 
 Para aprender a usar essas tecnologias acesse meu blog pessoal https://leonxama.azurewebsites.net/ , Linkedin: https://www.linkedin.com/in/anselmo-silva-100b5826/
