@@ -10,12 +10,13 @@
             <StackLayout
                 Padding="8">
                 <Image
-                	HeightRequest="150"
+                	HeightRequest="300"
                 	Source="speed">
                 </Image>
 
                 <Label
-                    Text="Email">
+                    Text="Email"
+                   >
                     
                 </Label>
                 <Entry

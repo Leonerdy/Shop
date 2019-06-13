@@ -1,4 +1,6 @@
-﻿namespace Shop.Web.Controllers
+﻿
+
+namespace Shop.Web.Controllers
 {
     using System.Threading.Tasks;
     using Data;

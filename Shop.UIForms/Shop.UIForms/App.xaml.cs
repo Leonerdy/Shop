@@ -22,9 +22,9 @@ namespace Shop.UIForms
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTA0MDI1QDMxMzcyZTMxMmUzMFI4Z2s0NWJVcFVscUY5bEZHZ2oveXJZMEF4dFlRL0VXUzhVRFc2SDRwWUk9");
             InitializeComponent();
 
-    #if DEBUG
+#if DEBUG
             HotReloader.Current.Start(this);
-    #endif
+#endif
 
             if (Settings.IsRemember)
             {
